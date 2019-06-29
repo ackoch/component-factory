@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>naevis-component-factory-config</comment>
+<entry key="createdBy">Naevis Ltd</entry>
+<entry key="allowIndexDefinitions">false</entry>
+<entry key="name">naevis-component-factory-config</entry>
+<entry key="acHandling">merge</entry>
+<entry key="created">2019-06-28T19:17:58.347+0200</entry>
+<entry key="groupId">org.naevis.training</entry>
+<entry key="version">1.0-SNAPSHOT</entry>
+<entry key="packageType">mixed</entry>
+<entry key="requiresRoot">true</entry>
+<entry key="group">naevis/training</entry>
+<entry key="description">...</entry>
+<entry key="artifactId">naevis-component-factory-config</entry>
+</properties>

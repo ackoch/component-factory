@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0" localization="OSGI-INF/metatype/org.naevis.training.SimpleService">
+    <OCD id="org.naevis.training.SimpleService" name="%org.naevis.training.SimpleService.name" description="%org.naevis.training.SimpleService.description">
+        <AD id="MyProperty" type="String" default="MyValue" name="%org.naevis.training.SimpleService.MyProperty.name" description="%org.naevis.training.SimpleService.MyProperty.description"/>
+    </OCD>
+    <Designate pid="org.naevis.training.SimpleService">
+        <Object ocdref="org.naevis.training.SimpleService"/>
+    </Designate>
+</metatype:MetaData>

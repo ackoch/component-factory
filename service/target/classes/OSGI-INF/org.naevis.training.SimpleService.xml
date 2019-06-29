@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.0.0" immediate="true" name="org.naevis.training.SimpleService">
+    <property name="MyProperty" value="MyValue"/>
+    <property name="service.ranking" type="Integer" value="10"/>
+    <service servicefactory="false">
+        <provide interface="org.naevis.training.SimpleService"/>
+    </service>
+    <implementation class="org.naevis.training.SimpleService"/>
+</scr:component>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="org.naevis.training.MultiServiceB" configuration-policy="require" activate="activate">
+    <property name="MyProperty" value="MyValue"/>
+    <property name="service.ranking" type="Integer" value="10"/>
+    <property name="serviceGroupId"/>
+    <service servicefactory="false">
+        <provide interface="org.naevis.training.MultiServiceB"/>
+    </service>
+    <reference name="multiServiceA" interface="org.naevis.training.MultiServiceA" cardinality="1..1" policy="static" target="(serviceGroupId=XXX)" bind="bindMultiServiceA" unbind="unbindMultiServiceA"/>
+    <implementation class="org.naevis.training.MultiServiceB"/>
+</scr:component>

@@ -1,0 +1,19 @@
+Manifest-Version: 1.0
+Bnd-LastModified: 1561743668291
+Build-Jdk: 1.8.0_162
+Built-By: schermul
+Bundle-Category: cq5
+Bundle-ManifestVersion: 2
+Bundle-Name: org.naevis.training.naevis-component-factory-service
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-SymbolicName: org.naevis.training.naevis-component-factory-servic
+ e
+Bundle-Version: 0.2.0.SNAPSHOT
+Created-By: Apache Maven Bundle Plugin
+Export-Package: org.naevis.training;version="0.2.0"
+Import-Package: org.slf4j;version="[1.7,2)"
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Service-Component: OSGI-INF/org.naevis.training.SimpleService.xml,OSGI-I
+ NF/org.naevis.training.MultiServiceB.xml,OSGI-INF/org.naevis.training.M
+ ultiServiceA.xml
+Tool: Bnd-3.3.0.201609221906
