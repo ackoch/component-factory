@@ -5,50 +5,63 @@ import org.osgi.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Map;
+
+@Component(
+        label = "Naevis Multi Service B",
+        name = "org.naevis.training.MultiServiceB",
+        policy = ConfigurationPolicy.REQUIRE,
+        configurationFactory = true, metatype = true, immediate = true
+)
+
 @Service(
         value = MultiServiceB.class
 )
 
-@Component(
-        //label = "Multi Service B",
-        //name = "org.naevis.training.multiservice.b.Config",
-        policy = ConfigurationPolicy.REQUIRE,
-        configurationFactory = true,
-        metatype = true,
-        immediate = true
+@Properties({
 
-)
+        @Property(
+                name = ComponentGroupHelper.WEBCONSOLE_NAMEHINT_NAME,
+                value = ComponentGroupHelper.WEBCONSOLE_NAMEHINT_VALUE
+        ),
 
-@Properties(
-        {
-                @Property(
-                        label = "MyProperty",
-                        name = "MyProperty",
-                        value = "MyValue"),
+        @Property(
+                label = ComponentGroupHelper.SERVICEGROUPID_LABEL,
+                name = ComponentGroupHelper.SERVICEGROUPID_NAME,
+                description = ComponentGroupHelper.SERVICEGROUPID_DESCRIPTION
+        ),
 
-                @Property(
-                        name = Constants.SERVICE_RANKING,
-                        intValue = 10)
-        })
+        @Property(
+                name = "multiServiceA.target",
+                label = ComponentGroupHelper.SERVICEGROUPID_TARGET_LABEL + " multiServiceA",
+                description = ComponentGroupHelper.SERVICEGROUPID_TARGET_DESCRIPTION
+        ),
+
+        @Property(
+                name = Constants.SERVICE_RANKING,
+                intValue = 10
+        )
+})
 
 
-public class MultiServiceB {
+public class MultiServiceB extends ComponentGroupHelper {
 
-        @Property(name = "serviceGroupId")
-        private String serviceGroupId;
+    protected static final Logger LOG = LoggerFactory.getLogger(MultiServiceB.class);
 
-        @Reference(target="(serviceGroupId=AAA)")
+    private String serviceGroupId = "";
+
+    @Reference(name = "multiServiceA", target = "(serviceGroupId=XXX)")
         MultiServiceA multiServiceA;
 
-        private static final Logger LOG = LoggerFactory.getLogger(MultiServiceB.class);
+    @Activate
+    public void activate(Map<String, Object> props){
 
-        @Activate
-        public void activate(){
+        serviceGroupId = ComponentGroupHelper.getAttribute(props, ComponentGroupHelper.SERVICEGROUPID_NAME);
 
-                LOG.debug("MultiServiceB activated: {}", this.toString());
-                LOG.info("MultiServiceB activated. My serviceGroupID: {}; multiServiceA: {}; serviceGroupId: {}",
-                        serviceGroupId,
-                        multiServiceA.toString(),
-                        multiServiceA.getServiceGroupId());
-        }
+        LOG.debug("BBB MultiServiceB activated: serviceGroupId: {}, multiServiceA.serviceGroupId: {}",
+                serviceGroupId, multiServiceA.getServiceGroupId());
+    }
+
+
+
 }

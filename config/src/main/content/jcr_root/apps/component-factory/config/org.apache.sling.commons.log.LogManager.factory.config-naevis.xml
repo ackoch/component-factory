@@ -19,4 +19,4 @@
     org.apache.sling.commons.log.file="logs/project-naevis.log"
     org.apache.sling.commons.log.level="debug"
     org.apache.sling.commons.log.names="[org.naevis]"
-    org.apache.sling.commons.log.pattern="\{0,date,yyyy-MM-dd HH:mm:ss.SSS} {4} [{3}] {5}"/>
+    org.apache.sling.commons.log.pattern="\{0,date,yyyy-MM-dd HH:mm:ss.SSS} {4} {5}"/>

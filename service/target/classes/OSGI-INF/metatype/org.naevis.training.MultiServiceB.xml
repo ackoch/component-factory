@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><metatype:MetaData xmlns:metatype="http://www.osgi.org/xmlns/metatype/v1.0.0" localization="OSGI-INF/metatype/org.naevis.training.MultiServiceB">
     <OCD id="org.naevis.training.MultiServiceB" name="%org.naevis.training.MultiServiceB.name" description="%org.naevis.training.MultiServiceB.description">
-        <AD id="MyProperty" type="String" default="MyValue" name="%org.naevis.training.MultiServiceB.MyProperty.name" description="%org.naevis.training.MultiServiceB.MyProperty.description"/>
+        <AD id="webconsole.configurationFactory.nameHint" type="String" default="{service.factoryPid}\ -\ {serviceGroupId}" name="%org.naevis.training.MultiServiceB.webconsole.configurationFactory.nameHint.name" description="%org.naevis.training.MultiServiceB.webconsole.configurationFactory.nameHint.description"/>
         <AD id="serviceGroupId" type="String" name="%org.naevis.training.MultiServiceB.serviceGroupId.name" description="%org.naevis.training.MultiServiceB.serviceGroupId.description"/>
+        <AD id="multiServiceA.target" type="String" name="%org.naevis.training.MultiServiceB.multiServiceA.target.name" description="%org.naevis.training.MultiServiceB.multiServiceA.target.description"/>
     </OCD>
     <Designate pid="org.naevis.training.MultiServiceB" factoryPid="org.naevis.training.MultiServiceB">
         <Object ocdref="org.naevis.training.MultiServiceB"/>

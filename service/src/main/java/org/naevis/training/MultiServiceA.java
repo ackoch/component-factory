@@ -2,52 +2,60 @@ package org.naevis.training;
 
 import org.apache.felix.scr.annotations.*;
 import org.osgi.framework.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.Map;
 
 @Component(
-        //label = "Multi Service A",
+        label = "Naevis Multi Service A",
         name = "org.naevis.training.MultiServiceA",
         policy = ConfigurationPolicy.REQUIRE,
-        configurationFactory = true,
-        metatype = true,
-        immediate = true
-
+        configurationFactory = true, metatype = true, immediate = true
 )
 
 @Service(
         value = MultiServiceA.class
 )
 
-@Properties(
-        {
+@Properties({
 
-                @Property(
-                        name = "webconsole.configurationFactory.nameHint",
-                        value = " {serviceName} - {serviceGroupId}"),
+        @Property(
+                name = ComponentGroupHelper.WEBCONSOLE_NAMEHINT_NAME,
+                value = ComponentGroupHelper.WEBCONSOLE_NAMEHINT_VALUE
+        ),
 
-                @Property(
-                        name = Constants.SERVICE_RANKING,
-                        intValue = 10)
-        })
+        @Property(
+                label = ComponentGroupHelper.SERVICEGROUPID_LABEL,
+                name = ComponentGroupHelper.SERVICEGROUPID_NAME,
+                description = ComponentGroupHelper.SERVICEGROUPID_DESCRIPTION
+        ),
+
+        @Property(
+                name = Constants.SERVICE_RANKING,
+                intValue = 10
+        )
+})
 
 
 public class MultiServiceA {
 
-        @Property(
-                label = "Service Name",
-                name = "serviceName",
-                value = "MultiServiceA",
-                description = "Friendly name to make the service identifiable in the felix console")
-        public String serviceName;
+    private static final Logger LOG = LoggerFactory.getLogger(MultiServiceA.class);
+
+    private String serviceGroupId = "";
 
 
-        @Property(
-                name = "serviceGroupId",
-                description = "Use this identifier to define a group of services. Only services with the same serviceGroupId will be able to reference each other. ")
-        private String serviceGroupId;
+    public String getServiceGroupId() {
+        return serviceGroupId;
+    }
 
-        public String getServiceGroupId() {
-                return serviceGroupId;
-        }
+    @Activate
+    public void activate(Map<String, Object> props){
+
+        serviceGroupId = ComponentGroupHelper.getAttribute(props, ComponentGroupHelper.SERVICEGROUPID_NAME);
+
+        LOG.debug("AAA MultiServiceA activated: serviceGroupId: {}", serviceGroupId);
+    }
 
 
 }

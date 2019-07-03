@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="org.naevis.training.MultiServiceA" configuration-policy="require">
-    <property name="webconsole.configurationFactory.nameHint" value=" {serviceName} - {serviceGroupId}"/>
-    <property name="service.ranking" type="Integer" value="10"/>
-    <property name="serviceName" value="MultiServiceA"/>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" immediate="true" name="org.naevis.training.MultiServiceA" configuration-policy="require" activate="activate">
+    <property name="webconsole.configurationFactory.nameHint" value="{service.factoryPid} - {serviceGroupId}"/>
     <property name="serviceGroupId"/>
+    <property name="service.ranking" type="Integer" value="10"/>
     <service servicefactory="false">
         <provide interface="org.naevis.training.MultiServiceA"/>
     </service>
